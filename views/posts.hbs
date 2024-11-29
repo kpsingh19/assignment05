@@ -1,0 +1,45 @@
+<div class="row">
+  <div class="col-md-12">
+    <h2>Posts <a href="/posts/add" class="btn btn-success pull-right">Add Post</a></h2>
+    <hr />
+
+    {{#if posts.length}}
+      <div class="table-responsive">
+        <table class="table">
+          <thead>
+            <tr>
+              <th>Post ID</th>
+              <th>Title</th>
+              <th>Post Date</th>
+              <th>Category</th>
+              <th>Published</th>
+              <th></th> <!-- Empty header for the "Remove" column -->
+            </tr>
+          </thead>
+          <tbody>
+            {{#each posts}}
+              <tr>
+                <td>{{this.id}}</td>
+                <td>{{this.title}}</td>
+                <td>{{formatDate this.postDate}}</td>
+                <td>
+                  <a href="/posts?category={{this.category}}">
+                    {{this.category}}
+                  </a>
+                </td>
+                <td>{{#if this.published}}true{{else}}false{{/if}}</td>
+                <td><a href="/posts/delete/{{this.id}}" class="btn btn-danger">remove</a></td>
+              </tr>
+            {{/each}}
+          </tbody>
+        </table>
+      </div>
+    {{/if}}
+  </div>
+
+  {{#unless posts.length}}
+  <div class="col-md-12 text-center">
+    <strong>{{message}}</strong>
+  </div>
+  {{/unless}}
+</div>
