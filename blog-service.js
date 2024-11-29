@@ -1,6 +1,5 @@
 //Karan Preet Singh, 157055229, kpsingh19@myseneca.ca
 require('pg'); 
-const Sequelize = require('sequelize');
 
 const { Op } = require('sequelize');
 	const Sequelize = require('sequelize');
